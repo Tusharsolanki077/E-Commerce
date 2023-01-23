@@ -14,6 +14,6 @@ const connectDatabase = () => {
 
 module.exports = connectDatabase
 
-// 996589
+
 
 // 7143
