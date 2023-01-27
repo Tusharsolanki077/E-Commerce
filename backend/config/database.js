@@ -9,9 +9,7 @@ const connectDatabase = () => {
         // useCreateIndex: true,
     }).then(() => {
         console.log(`Mongodb connected with server `)
-    }).catch((err) => {
-        console.log(err)
-    })
+    });
 
 }
 
