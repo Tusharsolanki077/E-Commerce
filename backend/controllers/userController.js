@@ -141,3 +141,63 @@ exports.resetPassword = catchAsyncError(async(req,res,next) => {
     sendToken(user,200,res);
 
 })
+
+// get User detail
+exports.getUserDetails = catchAsyncError(async(req,res,next) =>{
+
+    const user = await User.findById(req.user.id);
+
+    res.status(200).json({
+        success: true,
+        user,
+    });
+});
+
+// Update User password
+exports.updatePassword = catchAsyncError(async(req,res,next) =>{
+
+    const user = await User.findById(req.user.id).select("+password");
+
+    const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
+
+    if(!isPasswordMatched) {
+        return next (new ErrorHander("old password is incorrect",401));
+    }
+
+    if(req.body.newPassword !== req.body.confirmPassword ){
+        return next(new ErrorHander("Password does not match",400));
+    }
+
+    user.password = req.body.newPassword;
+
+    await user.save();
+
+    sendToken(user,200, res);
+
+    
+});
+
+
+// Update User Profile
+exports.updateProfile = catchAsyncError(async(req,res,next) =>{
+
+
+    const newUserData = {
+        name: req.body.name,
+        email:req.body.email,
+    }
+
+    // we will add cloudinary later
+
+    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+        new : true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+
+    res.status(200).json({
+        success: true,
+    });
+
+    
+});
