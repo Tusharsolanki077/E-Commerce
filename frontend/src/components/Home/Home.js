@@ -1,7 +1,17 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Home.css'
 
+import { getProduct } from "../../actions/productAction";
+import {useSelector, useDispatch } from "react-redux";
+
 const Home = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getProduct());
+    }, [dispatch]);
+
     return (
         <div className='home'>
             <div className="home__container">

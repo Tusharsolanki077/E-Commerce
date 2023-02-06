@@ -66,4 +66,4 @@ export function productsReducer (state = { products: [] }, action)  {
         default:
             return state;
     };
-}
+};
