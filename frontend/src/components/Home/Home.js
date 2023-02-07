@@ -1,8 +1,9 @@
 import React, { Fragment , useEffect } from 'react'
 import './Home.css'
 import ProductCard from '../layout/product/productCard';
+import { clearErrors, getProduct } from "../../actions/productAction";
 
-import { getProduct } from "../../actions/productAction";
+
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -14,7 +15,7 @@ const Home = () => {
     useEffect(() => {
         if (error) {
           
-          dispatch();
+          dispatch(clearErrors());
         }
         dispatch(getProduct());
       }, [dispatch, error]);
@@ -22,13 +23,9 @@ const Home = () => {
 
 
     return (
-
-       
-       
-
         <Fragment>
 
-        <div className='home'>
+        <div className='home' >
             <div className="home__container">
                 <img
                     className="home__image"
@@ -40,10 +37,11 @@ const Home = () => {
                 <div className='products'>
 
                     {products && 
-                        products.map((product) => (
-                            <ProductCard key={product._id} product={product} />
-                        ))
+                        products.map((product) => 
+                            <ProductCard key={product._id}  product={product} />
+                        )
                     }
+                    
                 </div>
             </div>
 
