@@ -3,6 +3,7 @@ import './Home.css'
 import ProductCard from '../layout/product/productCard';
 import { clearErrors, getProduct } from "../../actions/productAction";
 
+import Loader from '../layout/loader/loader'
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -10,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Home = () => {
 
     const dispatch = useDispatch();
-    const {error,products} = useSelector((state) => state.products);
+    const {loading,error,products} = useSelector((state) => state.products);
 
     useEffect(() => {
         if (error) {
@@ -23,7 +24,12 @@ const Home = () => {
 
 
     return (
+
         <Fragment>
+        {loading ? (
+            <Loader/>
+        ) : (
+            <Fragment>
 
         <div className='home' >
             <div className="home__container">
@@ -48,11 +54,9 @@ const Home = () => {
         </div>
         
         </Fragment>
+        )}
 
-
-        
-
-        
+        </Fragment>
     )
 }
 

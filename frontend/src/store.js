@@ -4,10 +4,11 @@ import { configureStore   } from '@reduxjs/toolkit';
 import thunk from "redux-thunk";
 // import { composeWithDevTools } from "redux-devtools-extension";
 
-import { productsReducer } from "./reducers/productReducer";
+import { productsReducer ,productDetailsReducer} from "./reducers/productReducer";
 
 const reducer = ({
     products: productsReducer,
+    productDetails: productDetailsReducer,
 });
 
 // let initialState = {};

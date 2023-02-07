@@ -11,7 +11,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const productCard = (product) => {
 
     const options = {
-        value: product.product.ratings,
+        value: product.product.rating,
         readOnly: true,
         precision: 0.5,
         edit:false,
