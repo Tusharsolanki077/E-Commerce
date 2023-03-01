@@ -1,0 +1,31 @@
+
+
+.main_contaniner{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    position: absolute;
+    display: flex;
+    background-color: red;
+    /* height: 100vh; */
+    width: 96vw;
+    height: 90vh;
+    justify-content: space-between;
+}
+
+.left_pic{
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+}
+.right_container{
+    display: grid;
+    margin: 1rem;
+    padding: 1.5rem;
+    
+    
+}
+
