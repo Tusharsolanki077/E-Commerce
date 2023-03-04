@@ -5,12 +5,12 @@ const loader = () => {
     return (
         <div className='loader_body'>
 
-            <div class="dots-container">
-                <div class="dots"></div>
-                <div class="dots"></div>
-                <div class="dots"></div>
-                <div class="dots"></div>
-                <div class="dots"></div>
+            <div className="dots-container">
+                <div className="dots"></div>
+                <div className="dots"></div>
+                <div className="dots"></div>
+                <div className="dots"></div>
+                <div className="dots"></div>
             </div>
 
         </div>

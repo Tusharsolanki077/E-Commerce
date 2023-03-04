@@ -1,5 +1,6 @@
 import React , { useEffect  } from 'react'
 import './productDetails.css'
+import { useParams } from 'react-router-dom';
 import img from '../../assets/mi 1.jpeg'
 
 import { getProductDetails } from '../../actions/productAction';
@@ -7,15 +8,23 @@ import { getProductDetails } from '../../actions/productAction';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-const ProductDetails = ({ match }) => {
+const ProductDetails = (  ) => {
 
     const dispatch = useDispatch();
-    const product = useSelector(state => state.ProductDetails);
+
+    const {id} = useParams();
+
 
     useEffect(() => {
-        dispatch(getProductDetails('63d213c6497f18d9bba36087'));
-      }, [dispatch ]);
+        dispatch(getProductDetails(id));
+    }, [dispatch, id]);
+    
 
+    const product = useSelector(state => state.productDetails.product);
+    
+    
+    
+    
 
     return (
         <div className='main_contaniner'>
@@ -30,21 +39,21 @@ const ProductDetails = ({ match }) => {
                 </div>
                 <div className='right_container'>
                     <div className='product_tittle'>
-                        <h1>Product tittle</h1>
+                        <h1>{product.name}</h1>
                     </div>
                     <div>
-                        <span>₹`3w5`</span>
+                        <span>₹{product.price}</span>
                         <p>Inclusive of all taxes</p>
                     </div>
                     <div className='about_product'>
-                        <p>product details dsjfk jdfkjd</p>
+                        <p>dssfdgfh</p>
                     </div>
                     <div className='btns'>
                         <button type="submit">Add to cart</button>
                         <button type="submit">Buy Now</button>
                     </div>
                     <div className='rating'>
-                        <p>rating in stars</p>
+                        <p>sjdfdj</p>
                         <p>number of rating</p>
                     </div>
 
