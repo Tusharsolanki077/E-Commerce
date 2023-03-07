@@ -5,6 +5,7 @@ import ProductCard from '../layout/product/productCard'
 import { clearErrors,getProduct } from '../../actions/productAction'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../layout/loader/loader'
+import { useParams } from 'react-router-dom'
 
 const Products = () => {
 
@@ -12,12 +13,16 @@ const Products = () => {
 
     const {loading,error,products} = useSelector((state) => state.products);
 
+    const {keyword} = useParams();
+
     useEffect(() => {
         if(error){ 
             dispatch(clearErrors());
         }
-        dispatch(getProduct());
-    },[dispatch,error]);
+        dispatch(getProduct(keyword));
+
+        
+    },[dispatch,error,keyword]);
 
 
 
